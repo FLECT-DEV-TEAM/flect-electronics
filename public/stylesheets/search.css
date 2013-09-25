@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+
+label                   { padding-top: 0; vertical-align: middle; cursor:pointer }
+input[type="radio"]     { display: inline; width: 20px; }
+
+#main                   { min-height: 636px; padding-bottom: 20px; background: #b8b8b8; }
+
+#question               { position: relative; z-index: 2; width: 660px; margin: 0 auto; border-top: 10px solid #449DFF; background: #fff; padding: 20px 20px 10px;
+                          -webkit-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; -moz-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; box-shadow: rgba(0,0,0,0.75) 0px 0px 3px;
+                          -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px; }
+#question .keywords     { position: relative; top: -10px; width: 629px; height:  1em; padding-left: 22px; border: 1px solid #b9b9b9; background: #fff; }
+#question .buttonSearch { position: absolute; top: -8px; left: 3px; width: 12px; height: 12px; }
+
+
+#question ul            { position: relative; margin-top: 10px; color: #333; font-size: 14px; }
+#question ul p          { margin-top: 5px; }
+#question ul li         { margin-bottom: 10px;}
+#question ul li.similar,
+#question ul li.category   { margin-top: 2px; padding-top: 5px; border-top: 1px solid #ccc; }
+#question input[type="submit"] { margin-top: 20px; }
+#question ul li.similar ul li { margin-bottom: 0; }
+#question .titleHead    { background: #449DFF; font-size: 12px; vertical-align: 12%; }
+
+#result                 { position: relative; z-index: 2; width: 700px; margin: 0 auto; padding-top: 20px; }
+#result h2              { position: relative; text-align: left; margin-bottom: 5px; padding-left: 65px; color: #000; font-size: 20px; }
+#result h2:before       { position: absolute; left: 18px; top: -20px; z-index: 5; display: block; content: " ";float: left; vertical-align: middle; background: url(../images/common/icon_question.png) no-repeat; width: 42px; height: 45px; }
+#result ul li           { height: 5em; line-height: 5em; }
+
+#result ul li .col1,
+#result ul li .col2,
+#result ul li .col3     { display: block; float: left; vertical-align: middle; color: #666; }
+#result ul li .title    { display: block; font-weight: bold; color: #000; }
+
+#result ul li .col1     { width: 8%; margin-left: 10px; }
+#result ul li .col2     { width: 72%; text-align: left; }
+#result ul li .col3     { width: 15%; height: 100%; margin-top: 1.4em; line-height: 100%; text-align: center; vertical-align: middle; }
+
+#result .category       { display: block; width: 40px; height: 29px; margin-top: 5px; background: url(../images/common/icon_category_s.png) no-repeat; }
+#result .tv             { background-position: 0      0; }
+#result .recorder       { background-position: 0  -29px; }
+#result .headphone      { background-position: 0  -58px; }
+#result .camera         { background-position: 0  -87px; }
+#result .etc            { background-position: 0 -116px; }
+#result .next           { margin-top: 1em; text-align: center; font-size: 14px; color: #fff; }
+#result .resultCount    { position: relative; z-index: 2; }
+#result ul li:last-child { background: #666;
+                          -webkit-border-bottom-left-radius: 10px; -webkit-border-bottom-right-radius: 10px;
+                          -moz-border-bottom-left-radius: 10px; -moz-border-bottom-right-radius: 10px;
+                          border-bottom-left-radius: 10px; bottom-right-radius: 10px; }
+
+#side,
+#side1,
+#side2,
+#side3                  { background: #1e2022; }
+#side h2                { background: #33373b; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+#side p.sedeTitle       { position: relative; padding-left: 5px; font-size: 16px; color: #fff; background: #777;
+                          background: -webkit-gradient(linear, left top, left bottom, from(#777), to(#1E2022));
+                          background: -moz-linear-gradient(top, #777, #1E2022); }
+#side p.timestamp       { color: #666; text-align: right; }
+
+
+/* portrait */
+@media only screen and (orientation: portrait) {
+    #side p.sedeTitle   { top: -10px; padding: 5px;  }
+    #side1,
+    #side2,
+    #side3              { width: 25%; }
+    #side1              { padding-left: 0;   padding-right: 5px; }
+    #side2              { padding-left: 5px; padding-right: 5px; }
+    #side3              { padding-left: 5px; padding-right: 5px; }
+    
+}
+

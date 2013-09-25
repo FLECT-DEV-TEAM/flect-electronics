@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>FLECT ELECTRONICS | 質問をさがす</title>
+<meta name="description" content="XXXXXXXXXX">
+<meta name="keywords" content="XXXXXXXXXX">
+<noscript>
+<meta http-equiv="refresh" content="0; URL=../common/js_error.html">
+</noscript>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+<link href="@{'/public/stylesheets/mediaqueries.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/style.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/search.css'}" rel="stylesheet" />
+</head>
+<body>
+<div id="signInModal" class="modal">
+    <h2>サインイン</h2>
+    #{form @Application.login(username, password)}
+        <div id="signIn">
+            <input class="input" type="email" name="username" size="30" placeholder="メールアドレス" />
+            <input class="input" type="password" name="password" size="30" placeholder="パスワード" />
+            <input id="closeSignIn" class="button50Left" type="submit" value="キャンセル" />
+            <input class="button50Right" type="submit" value="サインイン" />
+        </div>
+        <hr>
+        <div id="resetPassword" class="clearFix">
+            <a href="#">
+                <ul>
+                    <li>パスワードをお忘れですか？</li>
+                    <li class="arrow">></li>
+                </ul>
+            </a>
+        </div>
+        <hr>
+        <div id="createAccount" class="clearFix">
+            <a href="@{Signup.index()}">
+                <ul>
+                    <li>アカウントの作成</li>
+                    <li class="arrow">></li>
+                </ul>
+            </a>
+        </div>
+        <hr>
+    #{/form}
+</div>
+
+<div id="wrap">
+
+    <header class="navigation-bar black">
+        <div class="navButton bordered back">
+            <span class="label"><a href="@{Application.index()}">HOME</a></span>
+        </div>
+        <h1>質問をさがす</h1>
+        <div>
+            <span class="messageSignIn">${loginNickname}</span>
+        </div>
+        <div class="navButton bordered">
+            #{if loginNickname == "ゲスト"}
+                <span class="signIn"><a href="#" id="showSignInModal">サインイン</a></span>
+            #{/if}
+            #{else}
+                <span class="label signIn"><a href="@{Application.logout()}" id="	">サインアウト</a></span>
+            #{/else}
+        </div>
+    </header><!--/header-->
+
+    <div id="searchBox">
+        <span>質問を検索してください</span>
+        #{form @Question.search(q)}
+            <input id="keywords" name="q" type="text" placeholder="キーワード検索" value="${q}" />
+            <input id="buttonSearch" type="image" src="@{'/public/images/common/icon_search.png'}" />
+        #{/form}
+    </div>
+
+    <div id="content">
+
+        <div id="main">
+            <div id="filterW50"></div>
+            <div id="question">
+                <ul>
+                    <li>
+                        #{form @Question.search(q)}
+                            <input class="keywords" name="q" type="text" placeholder="質問を入力してください" value="${q}"/>
+                            <input class="buttonSearch" type="image" src="@{'/public/images/common/icon_search.png'}" />
+                        #{/form}
+                    </li>
+
+<!--
+                    <p><b><span class=titleHead>&nbsp;</span>&nbsp;類似する質問：</b></p>
+                    <li class="similar">
+                        <ul>
+                            <li>類似する質問が見つかりませんでした。</li>
+                            <li><a href="qa001.html">ＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸ</a></li>
+                            <li><a href="qa001.html">ＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸ</a></li>
+                        </ul>
+                    </li>
+-->
+                    <p><b><span class=titleHead>&nbsp;</span>&nbsp;カテゴリと製品を選択</b></b></p>
+                    <li class="category">
+                    #{form @Question.index(category, product), method:'POST'}
+                        <p>カテゴリ：</p>
+                      #{select 'category', items:families, valueProperty:'enName', labelProperty:'name',  id:'category', value:selectedProduct?.familyEn__c /}
+                      </li>
+                        <p>製品：</p>
+                      <select name="product" id="product">
+                      #{list items:products, as:'item'}
+                      <option value="${item.productCode}" class="${item.familyEn__c}">${item.productCode}</option>
+                      #{/list}
+                      </select>
+                    </li>
+                    <li>
+                            <input id="" class="button25" type="submit" name="" value="新しい質問を投稿する" />
+                        #{/form}
+                    </li>
+                </ul>
+            </div><!--/question-->
+
+
+            <div id="result">
+                #{if q != null && q != "" || selectedProduct !=null }
+                    #{if questions == null || questions.size() == 0}
+                    <span class="resultCount">質問はみつかりませんでした</span>
+                    #{/if}
+                    #{else}
+                    <span class="resultCount">${size} 件が一致しました</span>
+                    #{/else}
+                #{/if}
+               
+                <div class="list listTypeA">
+                    <ul>
+                        #{list items:questions, as:'item'}
+                        <li class="clearFix">
+                            <a href="@{Question.answer(item.id)}">
+                                <p class="col1 category ${item.communityId.getNameById()}"></p>
+                                <p class="col2">
+                                    <span class=title>${item.title.shorten(35)}</span>
+                                    <span>${item.body.shorten(60)}</span>
+                                <p class="col3 date">${item.createdDate.localeJa().formatDate()}</p>
+                            </a>
+                        </li>
+                        #{/list}
+                        
+                        #{if hasNext}
+                        <li class="clearFix" id="hasNext">
+                        #{/if}
+                        #{else}
+                        <li class="clearFix hide">
+                        #{/else}
+                            <a href="#hasNext">
+                                <p class="next">続きを見る</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--/list-->
+            </div><!--/result-->
+        </div><!--/main-->
+
+        <div id="side">
+            <p class="sedeTitle">最近の質問</p>
+            #{list items:recentQuestions, as:'item'}
+            <div id="side${item_index}">
+                <a href="@{Question.answer(item.id)}">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;${item.title}</h2>
+                    <p>${item.body.tobr().raw()}</p>
+                    <p class="timestamp">${item.createdDate.localeJa().formatDateTime()}</p>
+                </a>
+            </div>
+            #{/list}
+        </div><!--/side-->
+    </div><!--/content-->
+
+    <footer>
+        <div id="backToTop"><a href="#wrap"></a></div>
+    </footer><!--/footer-->
+</div><!--/wrap-->
+
+<style type="text/css">
+<!--
+.hide {
+	display: none;
+}
+-->
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+#{script 'jquery.easing.1.3.js' /}
+#{script 'common.js' /}
+<script type="text/javascript">
+     $(function(){
+        var originalProduct = $('#product option');
+        $('#product option').remove();
+        $('#product').append(originalProduct);
+        $('#product').children().each(function() {
+            if($(this).hasClass($('#category').val())) {
+                if($(this).text() === '${selectedProduct?.productCode}') {
+                    $(this).attr('selected', 'selected');
+                }
+            } else {
+                $(this).remove();
+            }
+        });
+        $('#category').bind('change', function() {
+            location.href = "/question/search?categoryName=" + $(this).val();
+        });        
+    });
+    
+            $('#hasNext').bind('click', function() {
+             $.getJSON("/question/search/next",function(data) {
+                     var hasNextPrevElement = $('#hasNext').prev(); 
+                     var hasNextElement = $('#hasNext');
+                     hasNextElement.css("hide");
+                     var questions = data.questions;
+                     var appendList = "";
+                     for(var i in questions) {
+                           appendList += '<li class="clearFix">'+
+                            '<a href=/question/answer/' +  questions[i].id + '>' +
+                                '<p class="col1 category ' + questions[i].category + '"></p>' +
+                                '<p class="col2">' +
+                                    '<span class=title>' + questions[i].title + '</span>' +
+                                    '<span>'+questions[i].body+'</span>' +
+                                '<p class="col3 date">'+questions[i].createdDate+'</p>' +
+                            '</a>' +
+                        '</li>';
+                     }
+                     if(data.hasNext) {
+                         hasNextPrevElement.after(hasNextElement).after(appendList)
+                     }else{
+                         appendList += '<li class="clearFix" style="display: none;">';
+                         appendList +=
+                         ' <a href="#hasNext">'
+                        +'<p class="next">続きを見る</p>'
+                         + '</a>'
+                         + '</li>';
+                         hasNextPrevElement.after(appendList);
+                         hasNextElement.remove();
+                     }
+             });
+       });
+</script>
+</body>
+</html>
+

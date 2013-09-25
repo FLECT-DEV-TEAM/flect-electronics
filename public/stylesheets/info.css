@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+#main                   { background: #dae4ed; padding-bottom: 20px; }
+#centerBox              { position: relative; width: 600px; height: auto; border-top: 10px solid #313f54; margin: 0 auto 20px; padding: 30px 60px; background: #fff;
+                          -webkit-border-radius: 5px; -moz-border-radius: 5px;
+                          -webkit-box-shadow: 0px 1px 3px #999; -moz-box-shadow: 0px 1px 3px #777; box-shadow: 0px 1px 3px #777; }
+
+#centerBox h3           { margin-bottom: 20px; font-size: 34px; color: #000; }
+#centerBox ul           { display: block; }
+#centerBox ul.left      { float: left; width: 25%; }
+#centerBox ul.left span.date { display: block; width: 108px; text-align: center; color: #ff9900; font-weight: bold; }
+#centerBox ul.right     { float: leftwidth: 75%;}
+#centerBox img          { width: 100px; height: 100px; margin-bottom: 20px; padding: 3px; border: 1px solid #999; }
+
+#centerBox h5           { margin-top: 40px; padding: 2px; text-align: center; font-size: 16px; font-weight: 100; color: #fff; background: #777; }
+#centerBox ul li span.date  { margin-right: 20px; color: #999; text-align: left; }
+.list li a:not(.noListLink) { color: #449dff; }
+
+
+#side,
+#side1,
+#side2,
+#side3                  { background: #044485; }
+#side h2                { background: #01284f; border-top: 1px solid #01376e; border-bottom: 1px solid #01376e; }
+#side p.sedeTitle       { position: relative; padding-left: 5px; font-size: 16px; color: #fff; background: #777;
+                          background: -webkit-gradient(linear, left top, left bottom, from(#777), to(#044485));
+                          background: -moz-linear-gradient(top, #777, #044485); }
+#side p.timestamp       { color: #999; text-align: right; }
+
+/* portrait */
+@media only screen and (orientation: portrait) {
+    #side p.sedeTitle   { top: -10px; padding: 5px;  }
+    #side1,
+    #side2,
+    #side3              { width: 25%; }
+    #side1              { padding-left: 0;   padding-right: 5px; }
+    #side2              { padding-left: 5px; padding-right: 5px; }
+    #side3              { padding-left: 5px; padding-right: 5px; }
+    
+}

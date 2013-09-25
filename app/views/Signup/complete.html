@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>FLECT ELECTRONICS | アカウント作成 - 完了</title>
+<meta name="description" content="XXXXXXXXXX">
+<meta name="keywords" content="XXXXXXXXXX">
+<noscript>
+<meta http-equiv="refresh" content="0; URL=../common/js_error.html">
+</noscript>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+<link href="@{'/public/stylesheets/mediaqueries.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/style.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/account.css'}" rel="stylesheet" />
+</head>
+<body>
+
+<div id="wrap">
+
+    <header class="navigation-bar black">
+        <h1>アカウントの作成（完了）</h1>
+        <div>
+            <span class="messageSignIn">${loginNickname}</span>
+        </div>
+        <div class="navButton bordered">
+            #{if loginNickname == "ゲスト"}
+                <span class="signIn"><a href="#" id="showSignInModal">サインイン</a></span>
+            #{/if}
+            #{else}
+                <span class="label signIn"><a href="@{Application.logout()}" id="	">サインアウト</a></span>
+            #{/else}
+        </div>
+    </header><!--/header-->
+
+    <div id="searchBox">
+        #{form @Question.search(q)}
+            <input id="keywords" name="q" type="text" placeholder="キーワード検索" />
+            <input id="buttonSearch" type="image" src="@{'/public/images/common/icon_search.png'}" />
+        #{/form}
+    </div><!--/Search Box-->
+
+    <div id="content">
+        <div id="main">
+
+            <div id="centerBox">
+                <div id="mainHead">
+                    <p>3. アカウント登録が完了しました。</p>
+                </div>
+                <div id="account">
+                    <div class="buttonArea">
+                        <a class="button buttonCenter" href="@{Application.index()}">HOMEへ戻る</a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!--/main-->
+
+
+        <div id="side">
+            <div id="side1">
+                <a href="@{Question.search()}">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;質問をさがす</h2>
+                    <p>FLECT製品についてのQAを検索してみよう！</p>
+                </a>
+            </div>
+            <div id="side2">
+                <a href="#">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;お知らせ1</h2>
+                    <p>フレクトはCloudforce '11のゴールドスポンサーです。もともとWeb専業開発だったのですが、2009年よりSalesforce事業に取り組んでいます。30歳前後の社員が中心の元気いっぱいの開発会社です！</p>
+                </a>
+            </div>
+            <div id="side3">
+                <a href="#">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;お知らせ2</h2>
+                    <p>フレクトの強みはリクルート様や紀伊國屋書店様などのサイト構築で培ったWeb開発力と、たくさんの認定デベロッパーを擁するSalesforce上での開発力の両方を備えている点です。SalesforceのWeb連携ならフレクトにお声掛けください！</p>
+                </a>
+            </div>
+        </div><!--/side-->
+
+    </div><!--/content-->
+
+    <footer>
+        <div id="backToTop"><a href="#wrap"></a></div>
+    </footer><!--/footer-->
+
+</div><!--/wrap-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+#{script 'jquery.easing.1.3.js' /}
+#{script 'common.js' /}
+</body>
+</html>

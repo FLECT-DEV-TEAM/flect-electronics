@@ -1,0 +1,53 @@
+*                       { margin: 0; padding:0; }
+h2                      { padding: 1em 0 0 0; }
+p                       { line-height: 1.4em; }
+body                    { font-size:100%; background: #5f5f5f; }
+
+/* Landscape mode (default) */
+#wrap                   { position:relative; overflow:hidden; margin:0 auto; width:1024px; text-align:left; background:#fff; }
+header                  { position: relative; width: 1024px; padding: 10px 0 20px 0; background: #fff; border-bottom: 1px solid #000; }
+#searchBox              { position: relative; width: 1024px; height: 36px; background: #f0f0f0; border-bottom: 1px solid #ccc; }
+#content                { position: relative; width: 1024px; height: auto; background: #fff;
+                          display: -webkit-box; display: -moz-box; }
+#main                   { position: relative; width: 768px; height: auto; padding: 20px 0 0;
+                          -webkit-box-ordinal-group: 1; -moz-box-ordinal-group: 1; }
+#side                   { position: relative; z-index: 5; width: 256px; padding: 20px 0;
+                          -webkit-box-ordinal-group: 2; -moz-box-ordinal-group: 2; }
+#side,
+#side h2                { background: #131313; font-weight: 100; }
+#side h2                { width: 251px !important; padding: 5px 0 0 5px; }
+#side h2 span           { background: #ffa518; font-size: 12px; vertical-align: 12%; }
+#side1,
+#side2,
+#side3                  { padding: 0; background: #000;; color: #fff; }
+#side h2,
+#side a                 { display: block; width: 100%; height: 100%; color: #fff; text-align: left; text-decoration: none; }
+#side p                 { margin: 10px 5px; color: #DAE4ED; }
+
+footer                  { position: relative; width: 1024px; height: 49px; background: #000;  }
+footer p                { padding: 20px 30px 0; color: #666; }
+
+#signInModal            { left: 356px; }
+
+@media only screen and (orientation:portrait){
+/* portrait mode */
+    header,
+    #wrap,
+    #searchBox,
+    footer              { width: 768px; }
+    #content            { display: block; }
+    #main               { width: 768px; position: relative; padding: 20px 0 0; }
+    #side               { width: 768px;
+                          display: -webkit-box; display: -moz-box;
+                          -webkit-box-sizing: border-box;
+                          -moz-box-sizing: border-box;
+                          box-sizing: border-box; }
+    #side h2                { width: 192px !important; padding: 5px 0 0 5px; }
+    #side1,
+    #side2,
+    #side3              { width: 31%; }
+    #side1              { padding-left: 10px; padding-right: 5px; }
+    #side2              { padding-left: 5px; padding-right: 5px; }
+    #side3              { padding-left: 5px; padding-right: 10px; }
+    #signInModal        { left: 207px; }
+}

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+#wrap                   {  background: #dee5eb !important; }
+
+#main                   { -webkit-box-ordinal-group: 2 !important;; -moz-box-ordinal-group: 2 !important;; }
+#side                   { -webkit-box-ordinal-group: 1 !important;; -moz-box-ordinal-group: 1 !important;; }
+
+
+#main                   { min-height: 617px; padding-bottom: 20px; background: #dae4ed; }
+#mainHead               { height: 80px; border-top: 10px solid #044485; border-bottom: 2px solid #044485;
+                          -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px;
+                          -moz-border-top-left-radius: 5px; -moz-border-top-right-radius: 5px; }
+#mainHead p             { padding-top: 25px; padding-left: 60px; font-size: 20px; font-weight: 100; color: #162447; font-weight: bold; }
+
+#centerBox              { position: relative; width: 600px; height: auto; margin: 0 auto; padding-bottom: 20px; background: #fff;
+                          -webkit-border-radius: 5px; -moz-border-radius: 5px;
+                          -webkit-box-shadow: 0px 1px 3px #999; -moz-box-shadow: 0px 1px 3px #777; box-shadow: 0px 1px 3px #777; }
+#centerBox .globalCoution { margin-top: 15px; padding-left: 60px; color: #ff3c3c; font-weight: bold; }
+#centerBox .coution     { margin-top: 5px; color: #ff3c3c; font-size: 12px; font-weight: bold; }
+
+#account                { margin-top: 10px; }
+#account dl             { display: -webkit-box; display: -moz-box; width: auto; border-bottom: 1px solid #9acbff; }
+#account dt             { width: 130px; height: auto; margin-top: 5px; padding: 10px 0 10px 60px; color: 333; font-weight: bold; font-size: 16px; }
+#account dt label       { color: #162447; }
+#account dt .essential  { display: block; background: #ffa518; color: #fff; font-size: 10px;
+                          -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+#account dt .smallSize  { width: 3em;  padding:  0 3px; text-align: center; }
+#account dt .largeSize  { width: auto; padding: 2px 5px; text-align: left; background: #999; }
+
+#account dd             { display: block; width: 370px; height: auto; padding: 17px 40px; 13px color: #333; font-size: 14px; }
+#account dd b           { color: #666; }
+#account dd img         { padding: 3px; border: 1px solid #777; }
+#account dd span        { display: block; color: #999; }
+
+
+#account dd .avatar     { width: 340px; background: #f0f0f0; padding: 5px 0 30px 8px; }
+#account dd .avatar ul li { float: left; width: 52px; height: 52px; margin-right: 10px; padding: 2px; border: 1px solid #ccc; background: #fff; }
+#account dd .avatar img { position: relative; top: -1px; left: -1px; border: none; }
+#account dd .avatar input { margin-left: 18px; }
+
+
+#account input[type="text"],
+#account input[type="password"] { width: 312px; }
+
+
+#colLeft                { position: absolute; top: 20px; left: 30px; }
+#colRight               { position: absolute; top: 20px; right: 30px; }
+
+.button                 { display: block; height: 30px; line-height: 30px; text-align: center; vertical-align: middle; color: #fff !important; }
+
+#centerBox .buttonArea  { height: 60px; }
+#centerBox .buttonCenter  { width: 25% !important; }
+#centerBox .button25Left  { margin: 20px 0 20px 60px !important; }
+#centerBox .button25Right { margin: 20px 60px 20px 0 !important; }
+
+
+fieldset                { border: 0; }
+ 
+.checklist              { list-style: none; margin: 0; padding: 0; }
+.checklist lebel        { margin-top: 10px; }
+.checklist li           { position: relative; float: left; width: 110px; height: 90px; margin-bottom: 10px; margin-right: 10px; background: #f0f0f0 url(../images/common/icon_select.png) no-repeat 0 0; }
+.checklist li.selected  { background-position: -110px 0; }
+.checklist li.selected .checkbox-select { display: none; }
+.checklist li input     { display: none; }
+
+.checkbox-select        { position: absolute; display: block; float: left; left: 15px; top: 60px; width: 80px; height: 21px; background: #59a744; }
+a.checkbox-deselect     { position: absolute; display: none; right: 10px; top: 60px; width: 55px; height: 21px; background: #999; }
+a.checkbox-deselect:hover { background: #888 !important; }
+.checkbox-select,
+a.checkbox-deselect     { -webkit-border-radius: 5px; -moz-border-radius: 5px; color: #fff !important; font-weight: bold !important; text-align: center; text-decoration: none !important; }
+
+.checklist li.selected a.checkbox-deselect { display: block; text-align: center; color: #fff; font-weight: bold; text-decoration: none; background: #ccc; }
+.checklist li label     { display: block; text-align: center; padding: 8px; }
+
+
+#side,
+#side1,
+#side2,
+#side3                  { background: #044485; }
+#side h2                { background: #01284f; border-top: 1px solid #01376e; border-bottom: 1px solid #01376e; }

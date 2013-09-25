@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>FLECT ELECTRONICS</title>
+<meta name="description" content="XXXXXXXXXX">
+<meta name="keywords" content="XXXXXXXXXX">
+<noscript>
+<meta http-equiv="refresh" content="0; URL=../common/js_error.html">
+</noscript>
+<meta name="viewport" content="width=768px, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
+<link href="@{'/public/stylesheets/mediaqueries.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/style.css'}" rel="stylesheet" />
+<link href="@{'/public/stylesheets/home.css'}" rel="stylesheet" />
+</head>
+<body>
+<div id="signInModal" class="modal">
+    <h2>サインイン</h2>
+    #{form @Application.login(username, password)}
+        <div id="signIn">
+            <ul class="coution">
+            #{ifErrors}
+                #{errors}
+                    <li>${error}</li>
+               #{/errors}
+            #{/ifErrors}
+            </ul>
+            <input class="input" type="email" name="username" size="30" placeholder="メールアドレス" value="${email}" />
+            <input class="input" type="password" name="password" size="30" placeholder="パスワード" value="${password}"/>
+            <input id="closeSignIn" class="button50Left" type="submit" value="キャンセル" />
+            <input class="button50Right" type="submit" value="サインイン" />
+        </div>
+        <hr>
+        <div id="resetPassword" class="clearFix">
+            <a href="#">
+                <ul>
+                    <li>パスワードをお忘れですか？</li>
+                    <li class="arrow">></li>
+                </ul>
+            </a>
+        </div>
+        <hr>
+        <div id="createAccount" class="clearFix">
+            <a href="@{Signup.index()}">
+                <ul>
+                    <li>アカウントの作成</li>
+                    <li class="arrow">></li>
+                </ul>
+            </a>
+        </div>
+        <hr>
+    #{/form}
+</div>
+
+
+<div id="wrap">
+
+    <header class="navigation-bar black">
+        <h1>FLECT ELECTRONICS</h1>
+        <div>
+            <span class="messageSignIn">${loginNickname}さん こんにちは</span>
+        </div>
+        <div class="navButton bordered">
+            #{if loginNickname == "ゲスト"}
+                <span class="signIn"><a href="#" id="showSignInModal">サインイン</a></span>
+            #{/if}
+            #{else}
+                <span class="label signIn"><a href="@{Application.logout()}" id="">サインアウト</a></span>
+            #{/else}
+        </div>
+    </header><!--/header-->
+
+    <div id="searchBox">
+        <span>カテゴリの中から製品を1つ選択してください</span>
+        #{form @Question.search(q)}
+            <input id="keywords" name="q" type="text" placeholder="キーワード検索" />
+            <input id="buttonSearch" type="image" src="@{'/public/images/common/icon_search.png'}" />
+        #{/form}
+    </div><!--/Search Box-->
+
+    <div id="content">
+        <div id="main">
+            <div id="category">
+                <ul id="selectCategory">
+                    <li>
+                        <a href="#product01" class="categoryButton bgTv">
+                            <img src="@{'/public/images/common/icon_category_tv.png'}" alt="" />
+                            <h3>テレビ</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#product02" class="categoryButton bgRecorder">
+                            <img src="@{'/public/images/common/icon_category_recorder.png'}" alt="" />
+                            <h3>レコーダー</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#product03" class="categoryButton bgHeadphone">
+                            <img src="@{'/public/images/common/icon_category_headphone.png'}" alt="" />
+                            <h3>ヘッドホン</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#product04" class="categoryButton bgCamera">
+                            <img src="@{'/public/images/common/icon_category_camera.png'}" alt="" />
+                            <h3>デジタルカメラ</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#product05" class="categoryButton bgEtc">
+                            <img src="@{'/public/images/common/icon_category_etc.png'}" alt="" />
+                            <h3>周辺機器</h3>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="product">
+                <div id="filterW30"></div>
+                <div id="selecter"></div>
+                <dl>
+                    #{list items:products.entrySet(), as:'entry'}
+                    <dd id="product0${entry_index}">
+                    #{list items:entry.getValue().entrySet(), as:'subEntry'}
+                        <ul class="clearFix">
+                            #{if entry.getKey().getName() == 'テレビ'}
+                            <h3 class="bgTv">${subEntry.getKey().getName()}</h3>
+                            #{/if}
+                            #{if entry.getKey().getName() == 'レコーダー'}
+                            <h3 class="bgRecorder">${subEntry.getKey().getName()}</h3>
+                            #{/if}
+                            #{if entry.getKey().getName() == 'ヘッドホン'}
+                            <h3 class="bgHeadphone">${subEntry.getKey().getName()}</h3>
+                            #{/if}
+                            #{if entry.getKey().getName() == 'デジタルカメラ'}
+                            <h3 class="bgCamera">${subEntry.getKey().getName()}</h3>
+                            #{/if}
+                            #{if entry.getKey().getName() == '周辺機器'}
+                            <h3 class="bgEtc">${subEntry.getKey().getName()}</h3>
+                            #{/if}
+                            #{list items:subEntry.getValue(), as:'productItem'}
+                                <li class="item"><a href="#">${productItem.productCode}</a></li>
+                            #{/list}
+                        </ul>
+                    #{/list}
+                    </dd>
+                    #{/list}
+                </dl>
+            </div>
+
+            <div id="topics">
+                <h2 class="clearFix">最近の質問</h2>
+                <div class="list listTypeB">
+                    <ul>
+                        #{list items:questions, as:'item'}
+                        <li class="clearFix">
+                            <a href="@{Question.answer(item.id)}">
+                                <p class="col1 category ${item.communityId.getNameById()}"></p>
+                                <p class="col2">
+                                    <span class="title">${item.title.shorten(35)}</span>
+                                    <span>${item.body.shorten(60)}</span>
+                                <p class="col3 date">${item.createdDate.localeJa().formatDate()}</p>
+                            </a>
+                        </li>
+                        #{/list}
+                    </ul>
+                </div>
+            </div>
+        </div><!--/main-->
+
+        <div id="side">
+            <div id="side1">
+                <a href="@{Signup.index()}">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;アカウントの作成</h2>
+                    <p>会員登録をしてFLECT製品についてDiscussionをしよう！</p>
+                </a>
+            </div>
+            <div id="side2">
+                <a href="#">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;お知らせ1</h2>
+                    <p>フレクトはCloudforce '11のゴールドスポンサーです。もともとWeb専業開発だったのですが、2009年よりSalesforce事業に取り組んでいます。30歳前後の社員が中心の元気いっぱいの開発会社です！</p>
+                </a>
+            </div>
+            <div id="side3">
+                <a href="#">
+                    <h2>&nbsp;<span>&nbsp;</span>&nbsp;お知らせ2</h2>
+                    <p>フレクトの強みはリクルート様や紀伊國屋書店様などのサイト構築で培ったWeb開発力と、たくさんの認定デベロッパーを擁するSalesforce上での開発力の両方を備えている点です。SalesforceのWeb連携ならフレクトにお声掛けください！</p>
+                </a>
+            </div>
+        </div><!--/side-->
+    </div><!--/content-->
+
+    <footer>
+        <div id="backToTop"><a href="#wrap"></a></div>
+        <p></p>
+    </footer><!--/footer-->
+</div><!--/wrap-->
+
+#{form @Question.search(null, productCode), id:'productForm'}
+    <input type="hidden" value="" id="targetProduct" name="productCode"/>
+#{/form}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+#{script 'jquery.easing.1.3.js' /}
+#{script 'common.js' /}
+#{script 'liquid.js' /}
+<script type="text/javascript">
+    $(function(){
+        $('.item').click(function() {
+            $('#targetProduct').val($(this).text());
+            $('#productForm').submit();	
+        });
+    });
+    
+    $(window).load(function() {
+        if(${sessionTimeout}) {
+            alert('セッションがタイムアウトしました。サインインしてください。');
+        }
+    });
+</script>
+</body>
+</html>

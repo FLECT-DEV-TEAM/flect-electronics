@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+#container { position: absolute; z-index: 9999; width: 100%; height: 100%; margin: auto; padding: 0; vertical-align: middle; text-align: center; background: #fff url(../images/common/bg_blue.png) repeat-x; }
+#message { position: absolute; top: 45%; left: 50%; margin: -49px 0 0 -325px; }
+#browser { position: absolute; top: 58%; left: 50%; margin: -36px 0 0 -160px; padding-top: 60px; }
